@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.sass']
 })
-export class FormComponent implements OnInit {
+export class FormComponent  {
+  listForm: any = [];
+  model: any = {};
 
-  constructor() { }
+  onSubmit() {
+    let data = JSON.stringify(this.model);
+    console.log(data)
+    // this.listForm = this.model.push();
+    // console.log(this.listForm);
 
-  ngOnInit() {
   }
-
 }
+
+
