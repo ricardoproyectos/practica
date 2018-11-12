@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
 
 
 @Component({
@@ -9,24 +7,19 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent  {
-  listForm: any = [];
-  model: any = {};
-  constructor(private http: HttpClient) {}
-
+  model: any [] = [];
+  listForm: any[] = [];
+  // datos: any = '';
+  constructor() {}
+  
   onSubmit() {
-    let formdata = JSON.stringify(this.model);
-    // console.log(data)
-    // this.listForm = this.model.push();
-    // console.log(this.listForm);
-    this.http.get(formdata).subscribe(data => {
-      console.log(data);
-    });
-
+    this.listForm.push(this.model);
+    // this.datos = this.listForm;
+    console.log(this.listForm);
+    // setTimeout('document.form.reset()',1000);
   }
 
   ngOnInit(): void {
-    // Make the HTTP request:
-    
   }
 
 }

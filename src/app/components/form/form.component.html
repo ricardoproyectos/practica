@@ -4,19 +4,27 @@
       <div class="col-md-8 offset-md-2">
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
-            <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-              <div *ngIf="firstName.errors.required">First Name is required</div>
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="model.nombre" #nombre="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && nombre.invalid }" required />
+            <div *ngIf="f.submitted && nombre.invalid" class="invalid-feedback">
+              <div *ngIf="nombre.errors.required">El Nombre es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
-            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-              <div *ngIf="lastName.errors.required">Last Name is required</div>
+            <label for="apellidoPaterno">Apellido Paterno</label>
+            <input type="text" class="form-control" name="apellidoPaterno" [(ngModel)]="model.apellidoPaterno" #apellidoPaterno="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && apellidoPaterno.invalid }" required />
+            <div *ngIf="f.submitted && apellidoPaterno.invalid" class="invalid-feedback">
+              <div *ngIf="apellidoPaterno.errors.required">Apellido Paterno es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="apellidoMaterno">Apellido Materno</label>
+            <input type="text" class="form-control" name="apellidoMaterno" [(ngModel)]="model.apellidoMaterno" #apellidoMaterno="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && apellidoMaterno.invalid }" required />
+            <div *ngIf="f.submitted && apellidoMaterno.invalid" class="invalid-feedback">
+              <div *ngIf="apellidoMaterno.errors.required">Apellido Materno es requerido</div>
             </div>
           </div>
           <div class="form-group">
@@ -24,8 +32,8 @@
             <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
               required email />
             <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-              <div *ngIf="email.errors.required">Email is required</div>
-              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+              <div *ngIf="email.errors.required">El Email es requerido</div>
+              <div *ngIf="email.errors.email">Se tiene que escribir un Email valido</div>
             </div>
           </div>
           <div class="form-group">
@@ -33,12 +41,12 @@
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
               [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
             <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-              <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              <div *ngIf="password.errors.required">Password es requerido</div>
+              <div *ngIf="password.errors.minlength">El Password tiene que tener un minimo de 6 caracteres</div>
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-primary" [disabled]="!f.form.valid">Registrar</button>
           </div>
         </form>
       </div>
@@ -49,16 +57,17 @@
 <table style="width:100%">
   <tr>
     <th>Nombre</th>
-    <th>apellido</th> 
-    <th>Age</th>
-    <th>Age</th>
-    <th>Age</th>
+    <th>Apellido Paterno</th> 
+    <th>Apellido Materno </th>
+    <th>Email</th>
+    <th>Password</th>
   </tr>
-  <tr >
-    <td>{{ data.firstName }}</td>
-    <td>{{ data.lastName }}</td>
-    <td>{{ data.email }}</td>
-    <td>{{ data.password }}</td>
+  <tr *ngFor="let item of listForm">
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.apellidoMaterno }}</td>
+      <td>{{ item.apellidoPaterno }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.password }}</td>
   </tr>
  
-</table>
+</table> 
