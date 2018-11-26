@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent  {
-  model: any [] = [];
-  listForm: any[] = [];
-  // datos: any = '';
+   private listForm: Array<any> = [];
+   private model: any = {};
+ 
   constructor() {}
   
   onSubmit() {
     this.listForm.push(this.model);
-    // this.datos = this.listForm;
+    this.model = {};
     console.log(this.listForm);
     // setTimeout('document.form.reset()',1000);
   }
